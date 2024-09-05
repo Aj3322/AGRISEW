@@ -27,7 +27,8 @@ class MainScreen extends StatelessWidget {
 
 
       bottomNavigationBar: Obx(() {
-        return BottomNavigationBar(
+        return
+          BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.local_florist),
