@@ -9,6 +9,8 @@ abstract class Routes {
   static const WEATHER_FORECASTING = '/weather-forecasting';
   static const CALENDAR_INTEGRATION = '/calendar-integration';
   static const SOIL_QUALITY = '/soil-quality';
+  static const LOGIN = '/login';
+  static const OTPVERIFICATION = '/otp-verification';
 }
 
 abstract class _Paths {
@@ -20,4 +22,7 @@ abstract class _Paths {
   static const WEATHER_FORECASTING = '/weather-forecasting';
   static const CALENDAR_INTEGRATION = '/calendar-integration';
   static const SOIL_QUALITY = '/soil-quality';
+  static const LOGIN = '/login';
+  static const SIGNUP = '/sign-up';
+  static const OTPVERIFICATION = '/otp-verification';
 }

@@ -19,10 +19,15 @@ class UserViews:
     @staticmethod
     def send_otp(phone, otp):
         """Send OTP via Twilio"""
-        client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+        send_sms(
+        'Here is the message',
+    '+12065550100',
+    ['+441134960000', '+441134960999']
+)
+        client = Client("AC6cccc489b8803d6da6eced335cda0ad4", "37f6b70d8a4e31e3f85c14912a83a68f")
         message = client.messages.create(
             body=f"Your OTP code is {otp}",
-            from_=settings.TWILIO_PHONE_NUMBER,
+            from_="+12085040673",
             to=phone
         )
         return message.sid

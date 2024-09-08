@@ -1,7 +1,11 @@
+import 'package:farmcare/app/modules/auth/views/signup_view.dart';
+import 'package:farmcare/app/views/views/location_access_view.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:sms_autofill/sms_autofill.dart';
+import 'package:get/get.dart';
 
+import '../controllers/auth_controller.dart';
 class OtpVerificationView extends StatefulWidget {
   const OtpVerificationView({Key? key}) : super(key: key);
 
@@ -30,7 +34,7 @@ class _OtpVerificationViewState extends State<OtpVerificationView> with CodeAuto
     cancel();
     super.dispose();
   }
-
+  String section = Get.arguments;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,6 +93,7 @@ class _OtpVerificationViewState extends State<OtpVerificationView> with CodeAuto
               ElevatedButton(
                 onPressed: () {
                   // Call your OTP verification logic here
+                 Get.put(AuthController()).verifyOtp(_otpCode,"signup");
                   print("Verifying OTP: $_otpCode");
                 },
                 child: const Text('Verify OTP'),

@@ -1,3 +1,7 @@
+import 'package:farmcare/app/modules/auth/bindings/auth_binding.dart';
+import 'package:farmcare/app/modules/auth/views/login_view.dart';
+import 'package:farmcare/app/modules/auth/views/otp_verification_view.dart';
+import 'package:farmcare/app/modules/auth/views/signup_view.dart';
 import 'package:farmcare/app/modules/crop_management/views/views_crop_management_view.dart';
 import 'package:farmcare/app/modules/disease_identification/bindings/views_disease_identification_binding.dart';
 import 'package:farmcare/app/modules/home/bindings/home_binding.dart';
@@ -16,9 +20,12 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.HOME;
+  static const INITIAL = Routes.LOGIN;
 
   static final routes = [
+    GetPage(name: _Paths.LOGIN, page: () => LoginView(),binding: AuthBinding()),
+    GetPage(name: _Paths.SIGNUP, page: () => SignupView(),binding: AuthBinding()),
+    GetPage(name: _Paths.OTPVERIFICATION, page: () => OtpVerificationView(),binding: AuthBinding()),
     GetPage(name: _Paths.HOME,
         page: () => HomeView(),
         binding: HomeBinding()

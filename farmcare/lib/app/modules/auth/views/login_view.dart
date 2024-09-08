@@ -1,9 +1,12 @@
+import 'package:farmcare/app/modules/auth/controllers/auth_controller.dart';
+import 'package:farmcare/app/modules/auth/views/otp_verification_view.dart';
+import 'package:farmcare/app/modules/auth/views/signup_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
-class LoginView extends GetView {
+class LoginView extends GetView<AuthController> {
   const LoginView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,7 @@ class LoginView extends GetView {
               SizedBox(height: MediaQuery.sizeOf(context).height*0.18,),
               SizedBox(height: 10,),
               Text("Enter your phone number",style: TextStyle(fontSize: 22)),
-              Text("We will send you a  4-digit pin to your phone number ",style: TextStyle(fontSize: 11),),
+              Text("We will send you a  6-digit pin to your phone number ",style: TextStyle(fontSize: 11),),
               SizedBox(height: 10,),
               Container(
                 padding: EdgeInsets.all(15),
@@ -40,7 +43,7 @@ class LoginView extends GetView {
                   languageCode: "en",
                   initialCountryCode: 'IN',
                   onChanged: (phone) {
-                    print(phone.completeNumber);
+                    controller.phone.value = phone.completeNumber;
                   },
                   onCountryChanged: (country) {
                     print('Country changed to: ' + country.name);
@@ -49,7 +52,7 @@ class LoginView extends GetView {
               ),
                SizedBox(width: 150,
                  child: ElevatedButton(onPressed: () {
-
+                  controller.login();
                  }, child: Text("Login")),
                ),
               SizedBox(height: 10,),
@@ -65,7 +68,7 @@ class LoginView extends GetView {
               ),
               Text("You haven't an account? "),
               TextButton(onPressed: () {
-        
+                Get.off(SignupView());
               }, child: Text("Sign-up")),
               SizedBox(width: MediaQuery.sizeOf(context).width*0.5,child: Divider(thickness: 5,))
             ],

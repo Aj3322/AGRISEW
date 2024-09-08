@@ -1,3 +1,4 @@
+import 'package:farmcare/app/modules/home/views/main_view.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -42,6 +43,7 @@ class UserController extends GetxController {
   void submitForm() {
     if (formKey.currentState!.validate()) {
       // Process the data (e.g., send it to the backend)
+      Get.off(MainScreen());
       Get.snackbar('Success', 'Form Submitted Successfully!');
     }
   }

@@ -8,6 +8,7 @@ import 'package:farmcare/app/modules/user/views/profile_setup_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'app/modules/auth/bindings/auth_binding.dart';
 import 'app/routes/app_pages.dart';
 import 'app/shared/themes/app_them.dart';
 import 'app/views/views/location_access_view.dart';
@@ -28,9 +29,8 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.system,
-     getPages: AppPages.routes,
-      initialBinding: UserBinding(),
-      home:ProfileSetupView(),
+      getPages: AppPages.routes,
+      initialRoute: AppPages.INITIAL,
     );
   }
 }
