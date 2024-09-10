@@ -31,18 +31,17 @@ class UserViews:
     def generate_otp():
         """Generate a 6-digit OTP"""
         return random.randint(100000, 999999)
-    
+
     @api_view(['POST'])
     def user_login(request):
         if request.method == 'POST':
-            phone = request.POST.get('phone')
+            phone = request.data.get('phone')
 
             # Check if phone number is registered
             try:
                 farmer_user = FarmerUser.objects.get(user_phonenumber=phone)
             except FarmerUser.DoesNotExist:
-                return JsonResponse({"message": "Phone number not registered. Please create an account."}, status=404)
-
+                return JsonResponse({"message": "Phone number not registered. Please create an account."}, status=404) 
             # Generate and send OTP
             otp = UserViews.generate_otp()
             farmer_user.otp = otp
