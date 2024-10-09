@@ -36,8 +36,10 @@ class Farm(models.Model):
 
     def __str__(self):
         return f"Farm {self.id} of user {self.user.username}"
-
-
+    
+class Crops(models.Model):
+    cropfeild = models.OneToOneField(User, on_delete=models.CASCADE)
+    
 
     
 

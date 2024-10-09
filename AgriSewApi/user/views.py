@@ -15,13 +15,17 @@ def user_task(request, section=None):
     else :
         return JsonResponse({"satatus":"Invalid"})
 
+
 def Farm_task(request):
     if request.method == 'POST':
-        farm = Farm()
-        farm.farm_name = request.POST.get('farm_name')
-        farm.farm_location = request.POST.get('farm_location')
-        farm.save()
-        return JsonResponse({"status": "success"})
-    else:
+        Farm.farm_name = request.POST.get('farm_name')
+        users = Farm.objects.all().values()
+        data = {
+            "status": "success",
+            "message": list(users)
+        }
+        return JsonResponse(data)
+    else :
         return JsonResponse({"status": "Invalid"})
+
     
